@@ -15,8 +15,19 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
     this.taskService.getTasks().subscribe(tasks => {
+      console.log("These are the retrieved tasks: ", tasks);
       this.tasks = tasks;
     })
+  }
+
+  deleteTask(event, task) {
+    const response = confirm('Are you sure you want to delete it?');
+      if(response) {
+        if(event.type == "dblclick") {
+          console.log("Received double click on task (about to be deleted): ", task)
+          this.taskService.deleteTask(task);
+        }
+      }
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngIf="tasks?.length > 0; else noTasks">
       <ul *ngFor="let task of tasks" class="collection">
-        <li class="collection-item">
+        <li class="collection-item" (dblclick)="deleteTask($event, task)">
           <strong>{{ task.title }}</strong> : {{ task.description }}
         </li>
       </ul>
