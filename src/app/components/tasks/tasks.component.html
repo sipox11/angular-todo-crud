@@ -3,6 +3,10 @@
       <ul *ngFor="let task of tasks" class="collection">
         <li class="collection-item" (dblclick)="deleteTask($event, task)">
           <strong>{{ task.title }}</strong> : {{ task.description }}
+          <div class="secondary-content">
+            <a href="#"><i class="fa fa-pencil-square-o"></i> </a>
+            <a href="#"><i class="fa fa-trash" (click)="deleteTask($event, task)"></i> </a>
+          </div>
         </li>
       </ul>
     </div>

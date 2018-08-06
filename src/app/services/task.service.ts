@@ -38,20 +38,12 @@ export class TaskService {
   }
 
   deleteTask(task: Task) {
-    this.taskDoc = this.afs.doc(`tasks/${task.id}`);
+    console.log("Deleting task: ", task);
+    this.taskDoc = this.collection.doc(`${task.id}`);
     this.taskDoc.delete().then(function() {
       console.log("Task successfully deleted!");
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });;
-  }
-  deleteTask2(task: Task) {
-    console.log("Deleting task: ", task);
-    this.taskDoc = this.collection.doc('${task.id}');
-    this.taskDoc.delete().then(function() {
-      console.log("Task successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
   }
 }

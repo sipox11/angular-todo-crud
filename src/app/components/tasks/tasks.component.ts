@@ -23,9 +23,13 @@ export class TasksComponent implements OnInit {
   deleteTask(event, task) {
     const response = confirm('Are you sure you want to delete it?');
       if(response) {
-        if(event.type == "dblclick") {
-          console.log("Received double click on task (about to be deleted): ", task)
+        console.log("Received double click on task (about to be deleted): ", task)
           this.taskService.deleteTask(task);
+        } else if (event.type == "click") {
+          console.log("Received single click on task (about to be deleted): ", task)
+          this.taskService.deleteTask(task);
+        } else {
+          console.log("Ignoring event...");
         }
       }
   }

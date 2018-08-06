@@ -1,3 +1,7 @@
 .container {
     width: 100%;
 }
+
+.secondary-content i {
+    margin: auto 5px;
+}
