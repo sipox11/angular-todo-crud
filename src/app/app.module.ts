@@ -4,6 +4,9 @@ import { AngularFireModule } from 'angularfire2'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { environment } from '../environments/environment'
 
+// Services
+import { TaskService } from './services/task.service';
+
 // Components
 import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
@@ -21,7 +24,9 @@ import { AddTasksComponent } from './components/add-tasks/add-tasks.component';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase, 'angular-fs')
   ],
-  providers: [],
+  providers: [
+    TaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
