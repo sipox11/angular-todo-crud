@@ -4,8 +4,19 @@
         <li class="collection-item" (dblclick)="deleteTask($event, task)">
           <strong>{{ task.title }}</strong> : {{ task.description }}
           <div class="secondary-content">
-            <a href="#"><i class="fa fa-pencil-square-o"></i> </a>
+            <a href="#"><i class="fa fa-pencil-square-o" (click)="editTask($event, task)"></i> </a>
             <a href="#"><i class="fa fa-trash" (click)="deleteTask($event, task)"></i> </a>
+            <div *ngIf="editState && taskToEdit.id == task.id">
+              <form (submit)="updateTask()">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input type="text" name="title" placeholder="Edit Title" [(ngModel)]="taskToEdit.title">
+                    <input type="text" name="description" placeholder="Edit Description" [(ngModel)]="taskToEdit.description">
+                  </div>
+                  <input type="submit" value="Update" class="btn btn-light">
+                </div>
+              </form>
+            </div>
           </div>
         </li>
       </ul>

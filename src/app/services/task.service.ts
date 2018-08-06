@@ -37,6 +37,12 @@ export class TaskService {
     });
   }
 
+  updateTask(task: Task) {
+    console.log("Updating task: ", task);
+    this.taskDoc = this.collection.doc(`${task.id}`);
+    this.taskDoc.update(task);
+  }
+
   deleteTask(task: Task) {
     console.log("Deleting task: ", task);
     this.taskDoc = this.collection.doc(`${task.id}`);
@@ -46,4 +52,6 @@ export class TaskService {
         console.error("Error removing document: ", error);
     });;
   }
+
+  
 }
